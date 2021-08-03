@@ -3,7 +3,7 @@ const router = express.Router();
 const Client = require("../models/User");
 const { check, query, body } = require("express-validator");
 
-const userControllers = require("../users/userController");
+const userController = require("../users/userController");
 
 router.post(
   "/register",[
@@ -26,8 +26,8 @@ router.post(
   body("name", "Please Enter a name").not().isEmpty(),
   body('password', 'please Enter password | Password min Length : 6  ').isLength({min: 6})
   
-],userControllers.userSignup);
+],userController.userSignup);
 
-router.post("/login", userControllers.userLogin);
+router.post("/login", userController.userLogin);
 
 module.exports = router;

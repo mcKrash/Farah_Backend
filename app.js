@@ -10,6 +10,8 @@ const dataBase = require("./config/database");
  */
  const app = express();
 
+
+ 
 /**
  * 
  * This route is for testing
@@ -24,7 +26,8 @@ const PORT = process.env.PORT || 8008;
 
 
 
-const userRoutes = require("./users/userRoutes");
+const clientRoutes = require("./users/userRoutes");
+const providerRoutes = require("./providers/providerRoutes");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -34,7 +37,8 @@ app.use(bodyParser.json());
 /**
  * -------------- ROUTES ----------------
  */
-app.use("/api/mobile/users", userRoutes);
+app.use("/api/mobile/users", clientRoutes);
+app.use("/api/mobile/provider", providerRoutes);
 
 
 
@@ -70,9 +74,11 @@ app.use("/api/mobile/users", userRoutes);
 
 
 
-
-
-
+/**
+ * 
+ * Data Base Configration
+ * 
+ */
 var  mongooseOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

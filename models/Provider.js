@@ -2,17 +2,16 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const providerSchema = new Schema({
-  _id: mongoose.Types.ObjectId,
 
-  provider_type: {
+  provider_type_id: {
     type: mongoose.Types.ObjectId,
     ref: "Provider_Types",
-    required: true,
+    required: true
   },
 
   name: { type: String, required: true },
 
-  phone: { type: Number, required: true },
+  phone: { type: Number},
 
   email: { type: String, required: true },
 
