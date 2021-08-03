@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
-const validationError = require('express-validator');
+const { validationError } = require('express-validator');
 
 
 
@@ -21,10 +21,10 @@ exports.userSignup = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, salt )
 
   try {
-    let data = await new User({
+    const data = await new User({
       name, email, phone,  password: hashedPassword
     });
-    const savedUser = await data.save()
+    await data.save()
       .then((res) => {
         console.log(res)
         res.status(201).json(res);
@@ -36,5 +36,32 @@ exports.userSignup = async (req, res, next) => {
 
 exports.userLogin = async (req, res, next) => {
   
+  const {
+    email,
+    password
+  } = req.body;
+  const client = await Client.findOne({
+    email,
+  });
+  if (!client)
+    return res.status(404).json({
+      message: "Not Found",
+    });
 
+  const validPass = await bcrypt.compare(password, client.password);
+
+  if (!validPass)
+    return res.status(401.1).json({
+      message: "Access is denied due to invalid credentials",
+    });
+
+  let token = jwt.sign({
+    _id: client._id
+  }, process.env.CLIENT_TOKEN_SECRET);
+
+  res.status(200).json({
+    client: client,
+    token: token
+  });
 };
+

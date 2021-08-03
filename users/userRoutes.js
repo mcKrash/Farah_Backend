@@ -18,14 +18,15 @@ router.post(
   check("phone").custom((value) => {
     return User.findOne({phone : value }).then((phone) => {
       if(phone){
-        return Promise.reject("This Phone Is Already In Use")
+        return Promise.reject("This Phone Is Already In Use");
       }
     });
   }),
-  body("name", "Pease Enter a name").not().isEmpty(),
+  body("name", "Please Enter a name").not().isEmpty(),
   body("phone", "Please Enter a Valid Phone").isLength({
     min: 9
   }),
+  body('password', 'please Enter password').isLength({min: 6})
   
 ],userControllers.userLogin);
 
