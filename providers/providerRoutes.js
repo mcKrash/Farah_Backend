@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const Provider = require("../models/User");
+const Provider = require("../models/Provider");
 const { check, query, body } = require("express-validator");
 
-const providerController = require("../models/Provider");
+const providerController = require("../providers/providersController");
 
 router.post(
     "/register",[
