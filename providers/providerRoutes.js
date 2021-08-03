@@ -26,3 +26,6 @@ router.post(
     body('password', 'please Enter password | Password min Length : 6  ').isLength({min: 6})
     
   ],providerController.providerSignup);
+
+
+  router.post('/add_provider_type', providerController.addProviderType)
