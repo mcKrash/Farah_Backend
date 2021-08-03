@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+// const User = require("../models/User");
 const { check, query, body } = require("express-validator");
 
 const userControllers = require("../users/userController");
@@ -30,7 +30,7 @@ router.post(
   }),
   body('password', 'please Enter password').isLength({min: 6})
   
-],userControllers.userLogin);
+],userControllers.userSignup);
 
 router.post("/login", userControllers.userLogin);
 
