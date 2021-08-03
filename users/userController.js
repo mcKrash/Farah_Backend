@@ -25,9 +25,9 @@ exports.userSignup = async (req, res, next) => {
       name, email, phone,  password: hashedPassword
     });
     await data.save()
-      .then((res) => {
-        console.log(res)
-        res.status(201).json({message : res});
+      .then((value) => {
+        console.log(value)
+        res.status(201).json({message : value})
       }).catch(err => console.log(err));
   } catch (error) {
     res.status(500).json({error: error});
