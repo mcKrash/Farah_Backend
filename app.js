@@ -11,7 +11,15 @@ require('dotenv').config();
  */
  const app = express();
 
+/**
+ * 
+ * This route is for testing
+ * 
+ */
+ app.get('/', (req, res) => {
 
+  res.send("Hello from home")
+})
 
 const PORT = process.env.PORT || 8008;
 
