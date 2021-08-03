@@ -28,4 +28,6 @@ router.post(
   ],providerController.providerSignup);
 
 
-  router.post('/add_provider_type', providerController.addProviderType)
+  router.post('/add_provider_type', providerController.addProviderType);
+
+  module.exports = router;
