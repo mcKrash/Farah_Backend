@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const Client = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validationError } = require('express-validator');
@@ -20,7 +20,7 @@ exports.userSignup = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, salt )
 
   try {
-    const data = await new User({
+    const data = await new Client({
       name, email, phone,  password: hashedPassword
     });
     await data.save()
