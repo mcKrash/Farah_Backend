@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("../config/keys");
 const { validationError } = require('express-validator');
 
 
@@ -55,7 +54,7 @@ exports.userLogin = async (req, res, next) => {
       message: "Access is denied due to invalid credentials",
     });
 
-  let token = jwt.sign({
+  const token = jwt.sign({
     _id: client._id
   }, process.env.CLIENT_TOKEN_SECRET);
 
