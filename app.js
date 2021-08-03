@@ -11,7 +11,7 @@ const dataBase = require("./config/database");
  const app = express();
 
 
- 
+
 /**
  * 
  * This route is for testing
@@ -77,7 +77,7 @@ app.use("/api/mobile/provider", providerRoutes);
 /**
  * 
  * Data Base Configration
- * 
+ *  
  */
 var  mongooseOptions = {
   useNewUrlParser: true,
