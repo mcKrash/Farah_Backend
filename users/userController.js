@@ -1,7 +1,8 @@
 const Client = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { validationError } = require('express-validator');
+const express = require('express');
+const { validationResult } = require('express-validator');
 
 
 
@@ -9,7 +10,7 @@ exports.userSignup = async (req, res, next) => {
 
   var { name, email, phone, password } = req.body;
 
-  const errors = validationError(req)
+  const errors = validationResult(req)
   if (!errors.isEmpty()) {
     return res.status(422).json({
       errors: errors.array()
