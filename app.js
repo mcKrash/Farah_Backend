@@ -3,8 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const dataBase = require("./config/database");
 
-// Gives us access to variables set in the .env file via `process.env.VARIABLE_NAME` syntax
-require('dotenv').config();
+
 
 /**
  * -------------- GENERAL SETUP ----------------
