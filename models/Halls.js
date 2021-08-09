@@ -35,7 +35,8 @@ const hallsSchema = new Schema({
 
   hall_imges: { type: String },
 
-  scheduall: { type: [Date] },
+  scheduall_date: { date_time: Date , },
+
   token: { type: String, default: null },
 },
 { timestamps: true }
