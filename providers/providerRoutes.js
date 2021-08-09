@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Provider = require("../models/Provider");
+const Provider = require("../models/Halls");
 const { check, query, body } = require("express-validator");
 
 const providerController = require("../providers/providersController");
