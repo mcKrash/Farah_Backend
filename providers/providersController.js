@@ -75,7 +75,6 @@ exports.addProviderType = async (req, res, next) => {
 };
 
 exports.uploadHallimages = async (req, res, next) => {  
-  console.log(req);
   cloudinary.config({
     cloud_name: cloudName,
     api_key: cloudApiKey,
