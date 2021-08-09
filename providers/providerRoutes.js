@@ -29,5 +29,6 @@ router.post(
 
 
   router.post('/add_provider_type', providerController.addProviderType);
+  router.post('/upload-image', providerController.imgeTest);
 
   module.exports = router;
