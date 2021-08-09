@@ -75,7 +75,7 @@ exports.uploadHallimages = async (req, res, next) => {
     api_secret: cloudApiSecret,
   });
 
-  if (req.url === "api/mobile/provider/upload" && req.method.toLowerCase() === "post") {
+  if (req.url === "https://wedding-farah.herokuapp.com/api/mobile/provider/upload" && req.method.toLowerCase() === "post") {
     // parse a file upload
     const form = new Formidable();
     console.log(form);
