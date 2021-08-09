@@ -1,4 +1,4 @@
-const Provider = require("../models/Provider");
+const Hall = require("../models/Halls");
 const ProviderType = require("../models/Provider_Types");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -20,7 +20,7 @@ exports.providerSignup = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   try {
-    const data = await new Provider({
+    const data = await new Hall({
       provider_type_id,
       name,
       email,
