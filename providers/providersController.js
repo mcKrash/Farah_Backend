@@ -4,6 +4,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const { validationResult } = require("express-validator");
+const Formidable = require('formidable');
+const cloudinary = require("cloudinary").v2;
+
+
+const cloudName = process.env.CLOUD_NAME;
+const cloudApiKey = process.env.CLOUD_API_KEY;
+const cloudApiSecret = process.env.CLOUD_API_SECRET;
 
 
 exports.providerSignup = async (req, res, next) => {
