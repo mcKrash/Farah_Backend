@@ -38,6 +38,8 @@ const hallsSchema = new Schema({
   scheduall: { date_time:{ type: Date}},
 
   token: { type: String, default: null },
+
+  rate: {type: Number, default: 0}
 },
 { timestamps: true }
 );
