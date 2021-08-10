@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const { validationResult } = require("express-validator");
-const Formidable = require("formidable");
 const cloudinary = require("cloudinary").v2;
 
 const cloudName = process.env.CLOUD_NAME;
