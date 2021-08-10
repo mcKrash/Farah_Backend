@@ -84,7 +84,7 @@ exports.uploadHallimages = async (req, res, next) => {
 
   await form.parse(req, (err, fields, files) => {
     //https://cloudinary.com/documentation/upload_images
-    cloudinary.uploader.upload(files.upload.path, (result) => {
+    cloudinary.uploader.upload(files, (result) => {
       console.log(result);
       if (result.public_id) {
         res.writeHead(200, { "content-type": "text/plain" });
