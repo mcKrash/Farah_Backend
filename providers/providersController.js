@@ -4,14 +4,12 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const { validationResult } = require("express-validator");
-const Formidable = require('formidable');
+const Formidable = require("formidable");
 const cloudinary = require("cloudinary").v2;
-
 
 const cloudName = process.env.CLOUD_NAME;
 const cloudApiKey = process.env.CLOUD_API_KEY;
 const cloudApiSecret = process.env.CLOUD_API_SECRET;
-
 
 exports.providerSignup = async (req, res, next) => {
   const { provider_type_id, name, email, phone, password } = req.body;
@@ -74,28 +72,27 @@ exports.addProviderType = async (req, res, next) => {
   }
 };
 
-exports.uploadHallimages = async (req, res, next) => {  
+exports.uploadHallimages = async (req, res, next) => {
   cloudinary.config({
     cloud_name: cloudName,
     api_key: cloudApiKey,
     api_secret: cloudApiSecret,
   });
 
-  if (req.url === "/upload"  && req.method.toLowerCase() === "post") {
-    // parse a file upload
-    const form = new Formidable();
-    console.log(form);
+  // parse a file upload
+  const form = new Formidable();
 
-    await form.parse(req, (err, fields, files) => {
-      //https://cloudinary.com/documentation/upload_images
-      cloudinary.uploader.upload(files.upload.path, (result) => {
-        console.log(result);
-        if (result.public_id) {
-          res.writeHead(200, { "content-type": "text/plain" });
-          res.write("received upload:\n\n");
-          res.end(util.inspect({ fields: fields, files: files , url: result.secure_url}));
-        }
-      });
+  await form.parse(req, (err, fields, files) => {
+    //https://cloudinary.com/documentation/upload_images
+    cloudinary.uploader.upload(files.upload.path, (result) => {
+      console.log(result);
+      if (result.public_id) {
+        res.writeHead(200, { "content-type": "text/plain" });
+        res.write("received upload:\n\n");
+        res.end(
+          util.inspect({ fields: fields, files: files, url: result.secure_url })
+        );
+      }
     });
-  }
+  });
 };
