@@ -1,6 +1,4 @@
-const StatusType = require("../models/Status");
-
-
+const StatusType = require("../models/Status_Type");
 
 
 exports.addStatus = async (req, res, next) => {

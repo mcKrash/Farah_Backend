@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const hallsSchema = new Schema({
+const hallSchema = new Schema({
   
   provider_type: {
     type: mongoose.Types.ObjectId,
@@ -44,4 +44,4 @@ const hallsSchema = new Schema({
 { timestamps: true }
 );
 
-module.exports = mongoose.model("Hall", hallsSchema);
+module.exports = mongoose.model("Hall", hallSchema);
