@@ -30,6 +30,7 @@ const clientRoutes = require("./users/userRoutes");
 const providerRoutes = require("./providers/providerRoutes");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 
