@@ -13,7 +13,7 @@ const fileupload = require('express-fileupload');
  */
  const app = express();
 
- 
+
 /**
  * 
  * This route is for testing
@@ -30,6 +30,12 @@ const PORT = process.env.PORT || 8008;
 
 const clientRoutes = require("./users/userRoutes");
 const providerRoutes = require("./providers/providerRoutes");
+const statusRoutes = require("./status/statusRoutes");
+
+
+
+
+
 
 app.use(fileupload({useTempFiles: true}))
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,6 +49,7 @@ app.use(bodyParser.json());
  */
 app.use("/api/mobile/users", clientRoutes);
 app.use("/api/mobile/provider", providerRoutes);
+app.use("/api/mobile/status", statusRoutes);
 
 
 
