@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 const dataBase = require("./config/database");
+const fileupload = require('express-fileupload'); 
+
+
 
 
 
@@ -10,8 +13,7 @@ const dataBase = require("./config/database");
  */
  const app = express();
 
-
-
+ 
 /**
  * 
  * This route is for testing
@@ -29,6 +31,7 @@ const PORT = process.env.PORT || 8008;
 const clientRoutes = require("./users/userRoutes");
 const providerRoutes = require("./providers/providerRoutes");
 
+app.use(fileupload({useTempFiles: true}))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
