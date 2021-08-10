@@ -87,7 +87,7 @@ exports.uploadHallimages = async (req, res, next) => {
     const result = await form.parse(req, (err, fields, files) => {
       //https://cloudinary.com/documentation/upload_images
       cloudinary.uploader.upload(
-        image /*files.upload.path*/,
+        file.tempFilePath /*files.upload.path*/,
         { public_id: `${Date.now()}`, resource_type: "auto" },
         (result) => {
           console.log(result);
