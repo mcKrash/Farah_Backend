@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 
 
 exports.addStatus = async (req, res, next) => {
-    const { provider_type_id, ar_name, en_name } = req.body;
+    const { status_type, ar_name, en_name } = req.body;
   
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -15,7 +15,7 @@ exports.addStatus = async (req, res, next) => {
   
     try {
       const data = await new Status({
-        provider_type_id,
+        status_type_id,
         ar_name,
         en_name,
       });
