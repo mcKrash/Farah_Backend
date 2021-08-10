@@ -72,7 +72,7 @@ exports.addProviderType = async (req, res, next) => {
   }
 };
 
-exports.uploadHallimages = async (req, res, next) => {
+exports.uploadImages = async (req, res, next) => {
   cloudinary.config({
     cloud_name: cloudName,
     api_key: cloudApiKey,
@@ -80,7 +80,7 @@ exports.uploadHallimages = async (req, res, next) => {
   });
 
   try {
-    const file = req.files.images;
+    const file = req.files.image;
     console.log(file);
 
     const result = await cloudinary.uploader.upload(file.tempFilePath, {
@@ -88,37 +88,11 @@ exports.uploadHallimages = async (req, res, next) => {
       resource_type: "auto",
     });
 
-    res.json({
+    res.status(200).json({
       public_id: result.public_id,
       url: result.secure_url,
     });
 
-    // // parse a file upload
-    // const form = new Formidable();
-    // const result = await form.parse(req, (err, fields, files) => {
-    //   //https://cloudinary.com/documentation/upload_images
-    //   cloudinary.uploader.upload(
-    //     file.tempFilePath /*files.upload.path*/,
-    //     { public_id: `${Date.now()}`, resource_type: "auto" },
-    //     (result) => {
-    //       console.log(result);
-    //       if (result.public_id) {
-    //         res.writeHead(200, { "content-type": "text/plain" });
-    //         res.write("received upload:\n\n");
-    //         res.end(
-    //           util.inspect({
-    //             fields: fields,
-    //             files: files,
-    //             url: result.secure_url,
-    //           })
-    //         );
-    //       }
-    //     }
-    //   );
-    // });
-    // if (result) {
-    //   return res.status().json({ succes: result, public_id : result.public_id , url: result.secure_url });
-    // }
   } catch (error) {
     return res.status(500).json({ error: error });
   }
