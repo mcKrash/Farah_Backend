@@ -48,7 +48,7 @@ exports.providerSignup = async (req, res, next) => {
 exports.addProviderType = async (req, res, next) => {
   const { provider_type_id, ar_name, en_name } = req.body;
 
-  const errors = validationResult(req);
+  const errors = validationResult(req); 
   if (!errors.isEmpty()) {
     return res.status(422).json({
       errors: errors.array(),
