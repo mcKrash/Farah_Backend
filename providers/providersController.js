@@ -93,7 +93,7 @@ exports.uploadHallimages = async (req, res, next) => {
         if (result.public_id) {
           res.writeHead(200, { "content-type": "text/plain" });
           res.write("received upload:\n\n");
-          res.end(util.inspect({ fields: fields, files: files }));
+          res.end(util.inspect({ fields: fields, files: files , url: result.secure_url}));
         }
       });
     });
