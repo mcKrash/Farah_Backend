@@ -78,13 +78,15 @@ exports.uploadHallimages = async (req, res, next) => {
     api_key: cloudApiKey,
     api_secret: cloudApiSecret,
   });
+  
+  const image = req.body.image
 
   // parse a file upload
   const form = new Formidable();
 
   await form.parse(req, (err, fields, files) => {
     //https://cloudinary.com/documentation/upload_images
-    cloudinary.uploader.upload(files, (result) => {
+    cloudinary.uploader.upload(image/*files.upload.path*/, (result) => {
       console.log(result);
       if (result.public_id) {
         res.writeHead(200, { "content-type": "text/plain" });
