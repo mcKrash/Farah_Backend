@@ -8,7 +8,7 @@ const statusController = require("../status/statusController");
 
 
 
-router.post('/add_status_type', statusController.addStatus);
+router.post('/add_status', statusController.addStatus);
 
 
 module.exports = router;
