@@ -88,6 +88,7 @@ exports.uploadImages = async (req, res, next) => {
       resource_type: "auto",
     });
 
+    console.log(result)
     res.status(200).json({
       public_id: result.public_id,
       url: result.secure_url,
