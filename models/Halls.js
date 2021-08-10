@@ -25,17 +25,17 @@ const hallsSchema = new Schema({
 
   food: {
     buffet: { type: Boolean, default: false, description: String },
-    dish: { type: Boolean, default: false, description: String },
+    dish: { type: Boolean, default: false, description: String }
   },
 
   Capacity: {
     chairs: { type: Number },
-    tables: { type: Number },
+    tables: { type: Number }
   },
 
-  hall_imges: { type: String },
+  show_imges: { type: String },
 
-  scheduall_date: { date_time: Date , },
+  scheduall: { date_time:{ type: Date}},
 
   token: { type: String, default: null },
 },

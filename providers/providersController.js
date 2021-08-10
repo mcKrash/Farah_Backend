@@ -12,7 +12,7 @@ const cloudApiKey = process.env.CLOUD_API_KEY;
 const cloudApiSecret = process.env.CLOUD_API_SECRET;
 
 exports.providerSignup = async (req, res, next) => {
-  const { provider_type_id, name, email, phone, password } = req.body;
+  const { provider_type_id, status_type_id, name, email, phone, password, food, Capacity, show_imges, scheduall } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -31,6 +31,7 @@ exports.providerSignup = async (req, res, next) => {
       email,
       phone,
       password: hashedPassword,
+
     });
     await data
       .save()
