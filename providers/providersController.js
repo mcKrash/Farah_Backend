@@ -12,7 +12,7 @@ const cloudApiSecret = process.env.CLOUD_API_SECRET;
 
 exports.hallSignup = async (req, res, next) => {
   const {
-    provider_type,
+    provider_type_id,
     status_id,
     name,
     email,
@@ -37,7 +37,7 @@ exports.hallSignup = async (req, res, next) => {
   try {
     const data = await new Hall({
       status_id,
-      provider_type,
+      provider_type_id,
       name,
       email,
       phone,
