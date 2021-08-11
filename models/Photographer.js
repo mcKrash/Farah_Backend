@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const photographerSchema = new Schema(
   {
-    provider_type_id: {
+    provider_type: {
       type: mongoose.Types.ObjectId,
       ref: "Provider_Types",
       required: true,

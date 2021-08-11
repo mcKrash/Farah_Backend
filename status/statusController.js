@@ -1,11 +1,11 @@
-const {StatusType} = require("../models/Status_Type");
+const Status = require("../models/Status");
 
 
 exports.addStatus = async (req, res, next) => {
     const { status_type_id, ar_name, en_name } = req.body;
   
     try {
-      const data = await new StatusType({
+      const data = await new Status({
         status_type_id,
         ar_name,
         en_name,

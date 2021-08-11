@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const statusTypeSchema = new Schema({
-  status_type_id: {
+const statusSchema = new Schema({
+  status_id: {
     type: Number,
     required: true,
   },
@@ -11,4 +11,4 @@ const statusTypeSchema = new Schema({
   en_name: { type: String },
 });
 
-module.export = mongoose.model("Status", statusTypeSchema);
+module.export = mongoose.model("Status", statusSchema);
