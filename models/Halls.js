@@ -35,7 +35,10 @@ const hallSchema = new Schema({
 
   hall_presentation_imges: [{ type: String, default: 'image.png' }],
 
-  scheduall: {type: Date},
+  scheduall: {
+    start_date: {type: Date, default: Date.now()},
+    end_date: {type: Date, default: Date.now() }
+  },
 
   token: { type: String, default: null },
 
