@@ -54,7 +54,7 @@ exports.hallSignup = async (req, res, next) => {
         res.status(201).json({ message: value });
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         return res.status(503).json({ message: err });
       });
   } catch (error) {
@@ -115,3 +115,10 @@ exports.uploadImages = async (req, res, next) => {
     return res.status(500).json({ error: error });
   }
 };
+
+
+
+
+// .populate("status")
+//       .populate("provider_type")
+//       .exec() 
