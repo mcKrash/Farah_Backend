@@ -21,7 +21,7 @@ const hallSchema = new Schema({
 
   profile_img: { type: String, required: false, default: "default.png" },
 
-  description: { type: String, required: true },
+  description: { type: String, required: true, default: 'No Discription Provieded Yet' },
 
   food: {
     buffet: { type: Boolean, default: false, description: String },

@@ -23,6 +23,8 @@ router.post(
       });
     }),
     body("name", "Please Enter a name").not().isEmpty(),
+    body('provider_type', 'provider_type Is Required'),
+    body('status_id', 'status_id'),
     body('password', 'please Enter password | Password min Length : 6  ').isLength({min: 6})
     
   ],providerController.hallSignup);
