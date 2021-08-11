@@ -29,13 +29,13 @@ const hallSchema = new Schema({
   },
 
   Capacity: {
-    chairs: { type: Number },
-    tables: { type: Number }
+    chairs: { type: Number, default: 0},
+    tables: { type: Number, default: 0}
   },
 
   hall_presentation_imges: [{ type: String, default: 'image.png' }],
 
-  scheduall: { date_time:{ type: Date}},
+  scheduall: {type: Date},
 
   token: { type: String, default: null },
 
