@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var statusSchema = mongoose.Schema({
-  status_type_id: {
+  status_id: {
     type: Number,
     required: true,
   },
