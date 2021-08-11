@@ -5,7 +5,7 @@ exports.addStatus = async (req, res, next) => {
     const { status_type_id, ar_name, en_name } = req.body;
   
     try {
-      const data = await new Status({
+      new Status({
         status_type_id,
         ar_name,
         en_name,
