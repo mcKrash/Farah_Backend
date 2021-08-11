@@ -6,7 +6,7 @@ const { check, query, body } = require("express-validator");
 const providerController = require("../providers/providersController");
 
 router.post(
-    "/register",[
+    "/hall_register",[
   
     check("email").custom((value) => {
       return Provider.findOne({ email: value }).then((user) => {
@@ -25,7 +25,7 @@ router.post(
     body("name", "Please Enter a name").not().isEmpty(),
     body('password', 'please Enter password | Password min Length : 6  ').isLength({min: 6})
     
-  ],providerController.providerSignup);
+  ],providerController.hallSignup);
 
 
   router.post('/add_provider_type', providerController.addProviderType);

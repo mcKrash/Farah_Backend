@@ -10,8 +10,8 @@ const cloudName = process.env.CLOUD_NAME;
 const cloudApiKey = process.env.CLOUD_API_KEY;
 const cloudApiSecret = process.env.CLOUD_API_SECRET;
 
-exports.providerSignup = async (req, res, next) => {
-  const { provider_type_id, status_type_id, name, email, phone, password, food, Capacity, show_imges, scheduall } = req.body;
+exports.hallSignup = async (req, res, next) => {
+  const { provider_type_id, status_type_id, name, email, phone, password, food, Capacity, hall_presentation_imges, scheduall } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -25,11 +25,16 @@ exports.providerSignup = async (req, res, next) => {
 
   try {
     const data = await new Hall({
+      status_type_id,
       provider_type_id,
       name,
       email,
       phone,
       password: hashedPassword,
+      food,
+      Capacity,
+      hall_presentation_imges,
+      scheduall
 
     });
     await data

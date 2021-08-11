@@ -33,7 +33,7 @@ const hallSchema = new Schema({
     tables: { type: Number }
   },
 
-  show_imges: { type: String },
+  hall_presentation_imges: [{ type: String, default: 'image.png' }],
 
   scheduall: { date_time:{ type: Date}},
 
