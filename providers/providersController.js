@@ -11,7 +11,18 @@ const cloudApiKey = process.env.CLOUD_API_KEY;
 const cloudApiSecret = process.env.CLOUD_API_SECRET;
 
 exports.hallSignup = async (req, res, next) => {
-  const { provider_type, status_id, name, email, phone, password, food, Capacity, hall_presentation_imges, scheduall } = req.body;
+  const {
+    provider_type,
+    status_id,
+    name,
+    email,
+    phone,
+    password,
+    food,
+    Capacity,
+    hall_presentation_imges,
+    scheduall,
+  } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -34,8 +45,7 @@ exports.hallSignup = async (req, res, next) => {
       food,
       Capacity,
       hall_presentation_imges,
-      scheduall
-
+      scheduall,
     });
     await data
       .save()
@@ -43,7 +53,10 @@ exports.hallSignup = async (req, res, next) => {
         console.log(value);
         res.status(201).json({ message: value });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        return res.status(503).json({ message: err });
+      });
   } catch (error) {
     res.status(500).json({ error: error });
   }
@@ -52,7 +65,7 @@ exports.hallSignup = async (req, res, next) => {
 exports.addProviderType = async (req, res, next) => {
   const { provider_type_id, ar_name, en_name } = req.body;
 
-  const errors = validationResult(req); 
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({
       errors: errors.array(),
@@ -93,12 +106,11 @@ exports.uploadImages = async (req, res, next) => {
       resource_type: "auto",
     });
 
-    console.log(result)
+    console.log(result);
     res.status(200).json({
       public_id: result.public_id,
       url: result.secure_url,
     });
-
   } catch (error) {
     return res.status(500).json({ error: error });
   }
