@@ -99,7 +99,7 @@ var  mongooseOptions = {
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
   family: 4 // Use IPv4, skip trying IPv6
 } 
-mongoose.connect(dataBase.dataBaseUrl, mongooseOptions , (err) => {
+mongoose.connect("mongodb+srv://farah-app:EyWeLL12INrC1JQb@farah.icftw.mongodb.net/wedding?retryWrites=true&w=majority", mongooseOptions , (err) => {
   if(err){
     console.log(err);
   }else{
