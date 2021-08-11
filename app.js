@@ -38,7 +38,7 @@ const statusRoutes = require("./status/statusRoutes");
 
 
 app.use(fileupload({useTempFiles: true}))
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
