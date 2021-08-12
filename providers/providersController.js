@@ -79,6 +79,9 @@ exports.addProviderType = async (req, res, next) => {
       en_name,
     });
     await data
+      // .populate("status")
+      //       .populate("provider_type")
+      //       .exec()
       .save()
       .then((value) => {
         console.log(value);
@@ -115,10 +118,38 @@ exports.uploadImages = async (req, res, next) => {
     return res.status(500).json({ error: error });
   }
 };
+exports.hallMainImage = async (req, res, next) => {
+  try {
+    cloudinary.config({
+      cloud_name: cloudName,
+      api_key: cloudApiKey,
+      api_secret: cloudApiSecret,
+    });
+    const file = req.files.hall_main;
+    console.log(file);
 
+    const result = await cloudinary.uploader.upload(file.tempFilePath, {
+      public_id: `${Date.now()}`,
+      resource_type: "auto",
+    });
 
-
-
-// .populate("status")
-//       .populate("provider_type")
-//       .exec() 
+    await Hall.updateOne(
+      email,
+      {
+        $set: { profile_img: result.secure_url},
+      },
+      {
+        new: true,
+      },
+      (err, result) => {
+        if (err) {
+          return res.status(403).json({message: err})
+        } else {
+          res.status(200).json({message : result})
+        }
+      }
+    );
+  } catch (error) {
+    return res.status(500).json({ error: error });
+  }
+};
