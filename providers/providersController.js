@@ -119,35 +119,31 @@ exports.uploadImages = async (req, res, next) => {
   }
 };
 exports.hallMainImage = async (req, res, next) => {
+  cloudinary.config({
+    cloud_name: cloudName,
+    api_key: cloudApiKey,
+    api_secret: cloudApiSecret,
+  });
+  const file = req.files.hall_main;
+  const { email } = req.body;
+  console.log(file);
+
+  const result = await cloudinary.uploader.upload(file.tempFilePath);
 
   try {
-    cloudinary.config({
-      cloud_name: cloudName,
-      api_key: cloudApiKey,
-      api_secret: cloudApiSecret,
-    });
-    const file = req.files.hall_main;
-    const {email} = req.body
-    console.log(file);
-
-    const result = await cloudinary.uploader.upload(file.tempFilePath, {
-      public_id: `${Date.now()}`,
-      resource_type: "auto",
-    });
-
     await Hall.updateOne(
       email,
       {
-        $set: { profile_img: result.secure_url},
+        $set: { profile_img: result.secure_url },
       },
       {
         new: true,
       },
       (err, result) => {
         if (err) {
-          return res.status(403).json({message: err})
+          return res.status(403).json({ message: err });
         } else {
-          res.status(200).json({message : result})
+          res.status(200).json({ message: result });
         }
       }
     );
