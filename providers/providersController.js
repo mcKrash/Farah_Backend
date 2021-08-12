@@ -119,6 +119,7 @@ exports.uploadImages = async (req, res, next) => {
   }
 };
 exports.hallMainImage = async (req, res, next) => {
+  const {email} = req.body
   try {
     cloudinary.config({
       cloud_name: cloudName,
