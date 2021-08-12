@@ -128,7 +128,9 @@ exports.hallMainImage = async (req, res, next) => {
   const { email } = req.body;
   console.log(file);
 
-  const result = await cloudinary.uploader.upload(file.tempFilePath);
+  const result = await cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
+    console.log(err, result)
+  })
 
   try {
     await Hall.updateOne(
