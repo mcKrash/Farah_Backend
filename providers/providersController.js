@@ -119,7 +119,7 @@ exports.uploadImages = async (req, res, next) => {
   }
 };
 exports.hallMainImage = async (req, res, next) => {
-  const {email} = req.body
+
   try {
     cloudinary.config({
       cloud_name: cloudName,
@@ -127,6 +127,7 @@ exports.hallMainImage = async (req, res, next) => {
       api_secret: cloudApiSecret,
     });
     const file = req.files.hall_main;
+    const {email} = req.body
     console.log(file);
 
     const result = await cloudinary.uploader.upload(file.tempFilePath, {
