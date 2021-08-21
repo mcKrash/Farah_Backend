@@ -50,10 +50,11 @@ exports.hallSignup = async (req, res, next) => {
     await data
       .save()
       .then((value) => {
-        value.populate('status_id').execPopulate()
-        console.log(value);
-        res.status(201).json({ message: value });
-      })
+        data.populate('status_id', function(err) {
+          res.status(201).json({ message: data });
+         });
+        
+      })  
       .catch((err) => {
         console.log(err);
         return res.status(503).json({ message: err });
