@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const providerTypesSchema = new Schema({   
+const providerTypesSchema = new Schema({
   provider_type_id: {
     type: Number,
     required: true,
