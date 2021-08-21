@@ -49,8 +49,10 @@ exports.hallSignup = async (req, res, next) => {
     });
     await data
       .save()
-      .then((value) => {
+      .then(() => {
         data.populate('provider_type_id', function(err) {
+          if(err) return res.status(500).json({ error : err});
+
           res.status(201).json({ message: data });
          });
         
