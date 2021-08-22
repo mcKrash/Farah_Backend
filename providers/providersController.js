@@ -50,7 +50,7 @@ exports.hallSignup = async (req, res, next) => {
     await data
       .save()
       .then((value) => {
-        data.populate('Provider_Type', function(err) {
+        data.populate('provider_type', function(err) {
           res.status(201).json({ message: data });
          });
         
@@ -65,7 +65,7 @@ exports.hallSignup = async (req, res, next) => {
 };
 
 exports.addProviderType = async (req, res, next) => {
-  const { provider_type_id, ar_name, en_name } = req.body;
+  const { provider_type, ar_name, en_name } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -76,7 +76,7 @@ exports.addProviderType = async (req, res, next) => {
 
   try {
     const data = await new ProviderType({
-      provider_type_id,
+      provider_type,
       ar_name,
       en_name,
     });
