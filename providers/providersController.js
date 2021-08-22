@@ -35,7 +35,7 @@ exports.hallSignup = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   try {
-    const data = await new Hall({
+    const hall = await new Hall({
       status,
       provider_type,
       name,
@@ -47,11 +47,12 @@ exports.hallSignup = async (req, res, next) => {
       hall_presentation_imges,
       scheduall,
     });
-    await data
+    await hall
       .save()
-      .then((value) => {
-        data.populate('provider_type._id', function(err) {
-          res.status(201).json({ message: data });
+      .then( () => {
+        hall.populate(hall, 'provider_type', function(err) {
+          console.log(hall.provider_type);
+          res.status(201).json({ message: hall });
          });
         
       })  
