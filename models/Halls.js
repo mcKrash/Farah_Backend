@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 const hallSchema = new Schema(
   {
-    provider_type_id: {
+    provider_type: {
       type: mongoose.Types.ObjectId,
       ref: "Provider_Types",
       required: true,
     },
-    status_id: {
+    status: {
       type: mongoose.Types.ObjectId,
       ref: "Status",
       required: true,
