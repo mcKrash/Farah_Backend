@@ -166,7 +166,7 @@ exports.getAllHalls = async(req, res, next) => {
       });
     }
     res.status(200).json({
-      message : hall
+      hall
     });
   }).select("-__v ");
 }
