@@ -12,7 +12,7 @@ const cloudApiSecret = process.env.CLOUD_API_SECRET;
 
 exports.hallSignup = async (req, res, next) => {
   const {
-    provider_type,
+    provider,
     status,
     name,
     email,
@@ -37,7 +37,7 @@ exports.hallSignup = async (req, res, next) => {
   try {
     const hall = await new Hall({
       status,
-      provider_type,
+      provider,
       name,
       email,
       phone,
@@ -50,7 +50,7 @@ exports.hallSignup = async (req, res, next) => {
     await hall
       .save()
       .then( () => {
-        hall.populate('provider_type', function() {
+        hall.populate('provider', function() {
           res.status(201).json({ message: hall });
          });
         
