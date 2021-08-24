@@ -158,7 +158,7 @@ exports.hallMainImage = async (req, res, next) => {
 
 
 exports.getAllHalls = async(req, res, next) => {
-  await hall.find((error, hall) => {
+  await Hall.find((error, hall) => {
     if (error) {
       return res.status(500).json({
         message: "couldn't find any halls",
