@@ -5,7 +5,7 @@ const hallSchema = new Schema(
   {
     provider: {
       type: mongoose.Types.ObjectId,
-      ref: "Provider_Types",
+      ref: "Provider",
       required: true,
     },
     status: {
