@@ -33,5 +33,6 @@ router.post(
   router.post('/add_provider_type', providerController.addProviderType);
   router.post('/upload', providerController.uploadImages);
   router.put('/upload-hall-main-img', providerController.hallMainImage);
+  router.get('/get_all_halls', providerController.getAllHalls);
 
   module.exports = router;
