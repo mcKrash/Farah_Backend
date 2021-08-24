@@ -1,5 +1,5 @@
 const Hall = require("../models/Halls");
-const ProviderType = require("../models/Provider_Types");
+const ProviderType = require("../models/Provider");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const express = require("express");
