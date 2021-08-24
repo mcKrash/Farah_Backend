@@ -50,7 +50,7 @@ exports.hallSignup = async (req, res, next) => {
     await hall
       .save()
       .then( () => {
-        hall.populate('status', function() {
+        hall.populate('provider_type', function() {
           res.status(201).json({ message: hall });
          });
         
