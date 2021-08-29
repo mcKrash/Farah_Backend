@@ -49,12 +49,11 @@ exports.hallSignup = async (req, res, next) => {
     });
     await hall
       .save()
-      .then( () => {
-        hall.populate('provider', function() {
+      .then(() => {
+        hall.populate("provider", function () {
           res.status(201).json({ message: hall });
-         });
-        
-      })  
+        });
+      })
       .catch((err) => {
         console.log(err);
         return res.status(503).json({ message: err });
@@ -130,8 +129,7 @@ exports.hallMainImage = async (req, res, next) => {
   const { email } = req.body;
   console.log(file);
 
-  await cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
-    if(err) return console.log(err)
+  const result = await cloudinary.uploader.upload(file.tempFilePath, () => {
     try {
       Hall.updateOne(
         email,
@@ -143,7 +141,7 @@ exports.hallMainImage = async (req, res, next) => {
         },
         (err, result) => {
           if (err) {
-            return res.status(422).json({ message: err });
+            res.status(422).json({ message: err });
           } else {
             res.status(200).json({ message: result });
           }
@@ -152,12 +150,10 @@ exports.hallMainImage = async (req, res, next) => {
     } catch (error) {
       res.status(500).json({ error: error });
     }
-  })
-
+  });
 };
 
-
-exports.getAllHalls = async(req, res, next) => {
+exports.getAllHalls = async (req, res, next) => {
   await Hall.find((error, halls) => {
     if (error) {
       return res.status(500).json({
@@ -166,7 +162,7 @@ exports.getAllHalls = async(req, res, next) => {
       });
     }
     res.status(200).json({
-      halls : halls
+      halls: halls,
     });
   }).select("-__v -password");
-}
+};
