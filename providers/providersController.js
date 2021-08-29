@@ -168,5 +168,5 @@ exports.getAllHalls = async(req, res, next) => {
     res.status(200).json({
       halls : halls
     });
-  }).select("-__v ");
+  }).select("-__v password");
 }
