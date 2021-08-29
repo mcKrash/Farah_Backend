@@ -133,7 +133,7 @@ exports.hallMainImage = async (req, res, next) => {
   await cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
     if(err) return console.log(err)
     try {
-      await Hall.updateOne(
+      Hall.updateOne(
         email,
         {
           $set: { profile_img: result.secure_url },
