@@ -129,28 +129,26 @@ exports.hallMainImage = async (req, res, next) => {
   const { email } = req.body;
   console.log(file);
 
-  const result = await cloudinary.uploader.upload(file.tempFilePath, () => {
-    try {
-      Hall.updateOne(
-        email,
-        {
-          $set: { profile_img: result.secure_url },
-        },
-        {
-          new: true,
-        },
-        (err, result) => {
-          if (err) {
-            res.status(422).json({ message: err });
-          } else {
-            res.status(200).json({ message: result });
-          }
+  const result = await cloudinary.uploader.upload(file.tempFilePath);
+  const final = result.secure_url;
+  
+    await Hall.updateOne(
+      email,
+      {
+        $set: { profile_img: final },
+      },
+      {
+        new: true,
+      },
+      (err, result) => {
+        if (err) {
+          console.log(err)
+          res.status(422).json({ message: err });
+        } else {
+          res.status(200).json({ message: result });
         }
-      );
-    } catch (error) {
-      res.status(500).json({ error: error });
-    }
-  });
+      }
+    );
 };
 
 exports.getAllHalls = async (req, res, next) => {
