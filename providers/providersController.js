@@ -143,7 +143,7 @@ exports.hallMainImage = async (req, res, next) => {
         },
         (err, result) => {
           if (err) {
-            res.status(422).json({ message: err });
+            return res.status(422).json({ message: err });
           } else {
             res.status(200).json({ message: result });
           }
