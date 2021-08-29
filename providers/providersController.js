@@ -149,6 +149,7 @@ exports.hallMainImage = async (req, res, next) => {
         }
       }
     );
+    return res.status(500).json("an error acuuerd")
 };
 
 exports.getAllHalls = async (req, res, next) => {
